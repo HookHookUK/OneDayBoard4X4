@@ -4,72 +4,76 @@ using UnityEngine;
 
 public class Pool_Straight_Lv2 : MonoBehaviour
 {
-        [SerializeField] GameObject Obj;
-        int dir = 0;
-        [SerializeField] float delay = 0.5f;
-        [SerializeField] float startPos_X;
-        [SerializeField] float startPos_Y;
+    [SerializeField] GameObject Obj;
+    int dir = 0;
+    float pos = 0;
 
-        GameObject temp;
-        GameObject tempChild;
+    [SerializeField] float delay = 0.5f;
+    [SerializeField] float startPos_X;
+    [SerializeField] float startPos_Y;
 
-        void Start()
+    GameObject temp;
+    GameObject tempChild;
+
+    void Start()
+    {
+        StartCoroutine(CO_Gen_Straight());
+    }
+
+    IEnumerator CO_Gen_Straight()
+    {
+        while (true)
         {
-            StartCoroutine(CO_Gen_Straight());
+            yield return new WaitForSeconds(delay);
+            PoolInst();
         }
+    }
 
-        IEnumerator CO_Gen_Straight()
+    public Vector2 StartPos() // 초기 방향값
+    {
+        dir = Random.Range(0, 4);
+        pos = Random.Range(0, 4) + 0.5f;
+
+        switch (dir)
         {
-            while (true)
-            {
-                yield return new WaitForSeconds(delay);
-                PoolInst();
-            }
+            case 0: // Left
+                return new Vector2(startPos_X, -pos);
+            case 1: // Right
+                return new Vector2(-startPos_X, -pos);
+            case 2: // Up
+                return new Vector2(pos, -startPos_Y);
+            default: // Down
+                return new Vector2(pos, startPos_Y);
         }
+    }
 
-        public Vector2 StartPos() // 초기 방향값
+    public void PoolInst()
+    {
+        Vector2 setPos = StartPos();
+        if (transform.childCount == 0)
         {
-            dir = Random.Range(0, 4);
-            switch (dir)
-            {
-                case 0: // Left
-                    return new Vector2(startPos_X, Random.Range(0, -4));
-                case 1: // Right
-                    return new Vector2(-startPos_X, Random.Range(0, -4));
-                case 2: // Up
-                    return new Vector2(Random.Range(0, 4), -startPos_Y);
-                default: // Down
-                    return new Vector2(Random.Range(0, 4), startPos_Y);
-            }
+            temp = Instantiate(Obj, setPos, Quaternion.identity);
+            temp.transform.SetParent(transform);
         }
-
-        public void PoolInst()
+        else
         {
-            Vector2 setPos = StartPos();
-            if (transform.childCount == 0)
+            for (int i = 0; i < transform.childCount; i++)
             {
-                temp = Instantiate(Obj, setPos, Quaternion.identity);
-                temp.transform.SetParent(transform);
-            }
-            else
-            {
-                for (int i = 0; i < transform.childCount; i++)
+                if (!transform.GetChild(i).gameObject.activeSelf)
                 {
-                    if (!transform.GetChild(i).gameObject.activeSelf)
-                    {
-                        tempChild = transform.GetChild(i).gameObject;
-                        tempChild.SetActive(true);
-                        //tempChild.transform.position = setPos;
-                        break;
-                    }
+                    tempChild = transform.GetChild(i).gameObject;
+                    tempChild.SetActive(true);
+                    //tempChild.transform.position = setPos;
+                    break;
+                }
 
-                    if (i == transform.childCount - 1)
-                    {
-                        temp = Instantiate(Obj, setPos, Quaternion.identity);
-                        temp.transform.SetParent(transform);
-                        break;
-                    }
+                if (i == transform.childCount - 1)
+                {
+                    temp = Instantiate(Obj, setPos, Quaternion.identity);
+                    temp.transform.SetParent(transform);
+                    break;
                 }
             }
         }
     }
+}

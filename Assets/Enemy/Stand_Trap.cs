@@ -28,13 +28,13 @@ public class Stand_Trap : MonoBehaviour
     {
         while(alpha <= 0.99f)
         {
-            mySR.color = new Color(255, 200, 0, alpha);
+            mySR.color = new Color(255, 175, 0, alpha);
             yield return new WaitForSeconds(0.01f);
             alpha += 0.01f;
         }
         mySR.color = new Color(255, 0, 0, 1);
         isAttack = true;
-        yield return new WaitForSeconds(0.15f);
+        yield return new WaitForSeconds(0.1f);
         isAttack = false;
         mySR.color = new Color(255, 0, 0, 0);
         gameObject.SetActive(false);
@@ -45,7 +45,6 @@ public class Stand_Trap : MonoBehaviour
         if(isAttack && collision.gameObject.CompareTag("Player"))
         {
             collision.gameObject.GetComponent<PlayerHit>().OnHit();
-            Debug.Log("Hit!");
         }
     }
 }

@@ -4,35 +4,57 @@ using UnityEngine;
 
 public class Move_Straight : MonoBehaviour
 {
-    int dir = 0;
+    [SerializeField] int dir = 0;
     [SerializeField] float speed;
     [SerializeField] Vector2[] startPos;
 
     [SerializeField] float aliveTime = 0f;
     [SerializeField] float DeadTime = 5f;
+    [SerializeField] float plusSize;
 
     private void Awake()
     {
         startPos = new Vector2[4];
-        startPos[0] = new Vector2 (10, Random.Range(0,-4));
-        startPos[1] = new Vector2 (-10, Random.Range(0, -4));
-        startPos[2] = new Vector2 (Random.Range(0, 4), -10);
-        startPos[3] = new Vector2 (Random.Range(0, 4), 10);
+        startPos[0] = new Vector2(10, Random.Range(0, -4));
+        startPos[1] = new Vector2(-10, Random.Range(0, -4));
+        startPos[2] = new Vector2(Random.Range(0, 4), -10);
+        startPos[3] = new Vector2(Random.Range(0, 4), 10);
     }
 
     private void OnEnable()
     {
         aliveTime = 0f;
-
-        dir = Random.Range(0, 4);
-        transform.position = startPos[dir];
+        CheckMyStartPos();
     }
 
     private void OnDisable()
     {
-        transform.position = Vector2.zero;
+        transform.position = startPos[Random.Range(0, 4)];
     }
 
+    private void CheckMyStartPos()
+    {
+        if(transform.position.x > 9) 
+        {
+            transform.position = startPos[0]; 
+            dir =  0; 
+        }
+        else if(transform.position.x < -9) 
+        {
+            transform.position = startPos[1];
+            dir =  1;
+        }
+        else if(transform.position.y < -9) 
+        {
+            transform.position = startPos[2];
+            dir =  2;
+        }
+        else if(transform.position.y > 9) 
+        {
+            transform.position = startPos[3];
+            dir = 3;
+        }
+    }
 
     // Update is called once per frame
     void Update()

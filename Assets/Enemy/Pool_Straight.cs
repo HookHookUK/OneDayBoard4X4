@@ -5,6 +5,7 @@ using UnityEngine;
 public class Pool_Straight : MonoBehaviour
 {
     [SerializeField] GameObject Obj;
+    [SerializeField] GameObject Obj2;
     int dir = 0;
     [SerializeField] float delay = 0.5f;
     [SerializeField] float startPos_X;
@@ -59,7 +60,6 @@ public class Pool_Straight : MonoBehaviour
                 {
                     tempChild = transform.GetChild(i).gameObject;
                     tempChild.SetActive(true);
-                    //tempChild.transform.position = setPos;
                     break;
                 }
 

@@ -10,7 +10,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI restartText;
     [SerializeField] TextMeshProUGUI timeRecord;
 
-    [SerializeField] float aliveTime = 0f;
+    [SerializeField] public float aliveTime = 0f;
 
     #region ╫л╠шео
     static private UIManager instance;

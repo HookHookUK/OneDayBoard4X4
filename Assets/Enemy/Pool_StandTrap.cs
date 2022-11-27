@@ -5,6 +5,7 @@ using UnityEngine;
 public class Pool_StandTrap : MonoBehaviour
 {
     [SerializeField] float delay = 0.5f;
+    [SerializeField] float paze2Time;
     int posX = 0;
     int posY = 0;
 
@@ -25,20 +26,35 @@ public class Pool_StandTrap : MonoBehaviour
             yield return new WaitForSeconds(delay);
 
             type = Random.Range(1, 4);
-            switch(type)
+            if (UIManager.Inst.aliveTime < paze2Time)
             {
-                /*case 0:
-                    PoolInstRandom(Random.Range(0, 16));
-                    break;*/
-                case 1:
-                    PoolInstLine();
-                    break;
-                case 2:
-                    PoolInstCross();
-                    break;
-                case 3:
-                    PoolInstBomb();
-                    break;
+                switch (type)
+                {
+                    case 1:
+                        PoolInstLine();
+                        break;
+                    case 2:
+                        PoolInstCross();
+                        break;
+                    case 3:
+                        PoolInstBomb();
+                        break;
+                }
+            }
+            else
+            {
+                switch (type)
+                {
+                    case 1:
+                        StartCoroutine(SoundWave());
+                        break;
+                    case 2:
+                        PoolInstBomb();
+                        break;
+                    case 3:
+                        StartCoroutine(Tonado());
+                        break;
+                }
             }
         }
     }
@@ -92,6 +108,7 @@ public class Pool_StandTrap : MonoBehaviour
         StartCoroutine(Bomb());
     }
 
+    #region Bomb
     IEnumerator Bomb()
     {
         int num = Random.Range(0, 2);
@@ -141,6 +158,7 @@ public class Pool_StandTrap : MonoBehaviour
 
         }
     }
+    #endregion
 
     #region CrossWave
     IEnumerator CrossWave_X()
@@ -258,6 +276,138 @@ public class Pool_StandTrap : MonoBehaviour
         }
     }
 
+    #endregion
+
+    ///////////////////////////////////////Lv2
+
+    #region SoundWave
+    IEnumerator SoundWave()
+    {
+        int num = Random.Range(0, 2);
+        if (num == 0)
+        {
+            transform.GetChild(0).gameObject.SetActive(true);
+            transform.GetChild(15).gameObject.SetActive(true);
+            yield return new WaitForSeconds(0.2f);
+            transform.GetChild(1).gameObject.SetActive(true);
+            transform.GetChild(4).gameObject.SetActive(true);
+            transform.GetChild(5).gameObject.SetActive(true);
+            transform.GetChild(14).gameObject.SetActive(true);
+            transform.GetChild(11).gameObject.SetActive(true);
+            transform.GetChild(10).gameObject.SetActive(true);
+            yield return new WaitForSeconds(0.2f);
+            transform.GetChild(2).gameObject.SetActive(true);
+            transform.GetChild(6).gameObject.SetActive(true);
+            transform.GetChild(8).gameObject.SetActive(true);
+            transform.GetChild(9).gameObject.SetActive(true);
+            transform.GetChild(10).gameObject.SetActive(true);
+            transform.GetChild(5).gameObject.SetActive(true);
+            transform.GetChild(7).gameObject.SetActive(true);
+            transform.GetChild(13).gameObject.SetActive(true);
+            yield return new WaitForSeconds(0.2f);
+            transform.GetChild(0).gameObject.SetActive(true);
+            transform.GetChild(1).gameObject.SetActive(true);
+            transform.GetChild(2).gameObject.SetActive(true);
+            transform.GetChild(3).gameObject.SetActive(true);
+            transform.GetChild(4).gameObject.SetActive(true);
+            transform.GetChild(7).gameObject.SetActive(true);
+            transform.GetChild(8).gameObject.SetActive(true);
+            transform.GetChild(11).gameObject.SetActive(true);
+            transform.GetChild(12).gameObject.SetActive(true);
+            transform.GetChild(13).gameObject.SetActive(true);
+            transform.GetChild(14).gameObject.SetActive(true);
+            transform.GetChild(15).gameObject.SetActive(true);
+            yield return new WaitForSeconds(0.2f);
+        }
+        else
+        {
+            transform.GetChild(3).gameObject.SetActive(true);
+            transform.GetChild(12).gameObject.SetActive(true);
+            yield return new WaitForSeconds(0.2f);
+            transform.GetChild(2).gameObject.SetActive(true);
+            transform.GetChild(6).gameObject.SetActive(true);
+            transform.GetChild(7).gameObject.SetActive(true);
+            transform.GetChild(8).gameObject.SetActive(true);
+            transform.GetChild(9).gameObject.SetActive(true);
+            transform.GetChild(13).gameObject.SetActive(true);
+            yield return new WaitForSeconds(0.2f);
+            transform.GetChild(1).gameObject.SetActive(true);
+            transform.GetChild(5).gameObject.SetActive(true);
+            transform.GetChild(9).gameObject.SetActive(true);
+            transform.GetChild(10).gameObject.SetActive(true);
+            transform.GetChild(11).gameObject.SetActive(true);
+            transform.GetChild(4).gameObject.SetActive(true);
+            transform.GetChild(6).gameObject.SetActive(true);
+            transform.GetChild(12).gameObject.SetActive(true);
+            yield return new WaitForSeconds(0.2f);
+            transform.GetChild(0).gameObject.SetActive(true);
+            transform.GetChild(1).gameObject.SetActive(true);
+            transform.GetChild(2).gameObject.SetActive(true);
+            transform.GetChild(3).gameObject.SetActive(true);
+            transform.GetChild(4).gameObject.SetActive(true);
+            transform.GetChild(7).gameObject.SetActive(true);
+            transform.GetChild(8).gameObject.SetActive(true);
+            transform.GetChild(11).gameObject.SetActive(true);
+            transform.GetChild(12).gameObject.SetActive(true);
+            transform.GetChild(13).gameObject.SetActive(true);
+            transform.GetChild(14).gameObject.SetActive(true);
+            transform.GetChild(15).gameObject.SetActive(true);
+            yield return new WaitForSeconds(0.2f);
+        }
+    }
+    #endregion
+
+    #region SoundWave
+    IEnumerator Tonado()
+    {
+        int num = Random.Range(0, 2);
+        if(num == 0)
+        {
+            transform.GetChild(0).gameObject.SetActive(true);
+            transform.GetChild(3).gameObject.SetActive(true);
+            transform.GetChild(12).gameObject.SetActive(true);
+            transform.GetChild(15).gameObject.SetActive(true);
+            yield return new WaitForSeconds(0.2f);
+            transform.GetChild(1).gameObject.SetActive(true);
+            transform.GetChild(7).gameObject.SetActive(true);
+            transform.GetChild(8).gameObject.SetActive(true);
+            transform.GetChild(14).gameObject.SetActive(true);
+            yield return new WaitForSeconds(0.2f);
+            transform.GetChild(2).gameObject.SetActive(true);
+            transform.GetChild(11).gameObject.SetActive(true);
+            transform.GetChild(4).gameObject.SetActive(true);
+            transform.GetChild(13).gameObject.SetActive(true);
+            yield return new WaitForSeconds(0.2f);
+            transform.GetChild(6).gameObject.SetActive(true);
+            transform.GetChild(10).gameObject.SetActive(true);
+            transform.GetChild(5).gameObject.SetActive(true);
+            transform.GetChild(9).gameObject.SetActive(true);
+            yield return new WaitForSeconds(0.2f);
+        }
+        else
+        {
+            transform.GetChild(6).gameObject.SetActive(true);
+            transform.GetChild(10).gameObject.SetActive(true);
+            transform.GetChild(5).gameObject.SetActive(true);
+            transform.GetChild(9).gameObject.SetActive(true);
+            yield return new WaitForSeconds(0.2f);
+            transform.GetChild(2).gameObject.SetActive(true);
+            transform.GetChild(11).gameObject.SetActive(true);
+            transform.GetChild(4).gameObject.SetActive(true);
+            transform.GetChild(13).gameObject.SetActive(true);
+            yield return new WaitForSeconds(0.2f);
+            transform.GetChild(1).gameObject.SetActive(true);
+            transform.GetChild(7).gameObject.SetActive(true);
+            transform.GetChild(8).gameObject.SetActive(true);
+            transform.GetChild(14).gameObject.SetActive(true);
+            yield return new WaitForSeconds(0.2f);
+            transform.GetChild(0).gameObject.SetActive(true);
+            transform.GetChild(3).gameObject.SetActive(true);
+            transform.GetChild(12).gameObject.SetActive(true);
+            transform.GetChild(15).gameObject.SetActive(true);
+            yield return new WaitForSeconds(0.2f);
+        }
+    }
     #endregion
 
 }
