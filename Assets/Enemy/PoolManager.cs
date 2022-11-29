@@ -13,19 +13,19 @@ public class PoolManager : MonoBehaviour
         {
             transform.GetChild(1).gameObject.SetActive(true);
         }
-        if(UIManager.Inst.aliveTime > 30)
+        if(UIManager.Inst.aliveTime > 25)
         {
             transform.GetChild(0).gameObject.SetActive(false);
             transform.GetChild(1).gameObject.SetActive(false);
 
             transform.GetChild(2).gameObject.SetActive(true);
         }
-        if (UIManager.Inst.aliveTime > 70)
+        if (UIManager.Inst.aliveTime > 60)
         {
             transform.GetChild(2).gameObject.SetActive(false);
             transform.GetChild(3).gameObject.SetActive(true);
         }
-        if (UIManager.Inst.aliveTime > 100)
+        if (UIManager.Inst.aliveTime > 90)
         {
             transform.GetChild(4).gameObject.SetActive(true);
         }

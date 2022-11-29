@@ -29,12 +29,12 @@ public class Stand_Trap : MonoBehaviour
         while(alpha <= 0.99f)
         {
             mySR.color = new Color(255, 175, 0, alpha);
-            yield return new WaitForSeconds(0.01f);
-            alpha += 0.01f;
+            yield return new WaitForSeconds(0.02f * Time.deltaTime);
+            alpha += 1 * Time.deltaTime;
         }
         mySR.color = new Color(255, 0, 0, 1);
         isAttack = true;
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(10f * Time.deltaTime);
         isAttack = false;
         mySR.color = new Color(255, 0, 0, 0);
         gameObject.SetActive(false);

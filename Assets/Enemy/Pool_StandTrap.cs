@@ -6,6 +6,8 @@ public class Pool_StandTrap : MonoBehaviour
 {
     [SerializeField] float delay = 0.5f;
     [SerializeField] float paze2Time;
+
+    [SerializeField] float instSpeed;
     int posX = 0;
     int posY = 0;
 
@@ -118,12 +120,12 @@ public class Pool_StandTrap : MonoBehaviour
             transform.GetChild(5).gameObject.SetActive(true);
             transform.GetChild(10).gameObject.SetActive(true);
             transform.GetChild(15).gameObject.SetActive(true);
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(instSpeed * Time.deltaTime);
             transform.GetChild(3).gameObject.SetActive(true);
             transform.GetChild(6).gameObject.SetActive(true);
             transform.GetChild(9).gameObject.SetActive(true);
             transform.GetChild(12).gameObject.SetActive(true);
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(instSpeed * Time.deltaTime);
             transform.GetChild(1).gameObject.SetActive(true);
             transform.GetChild(2).gameObject.SetActive(true);
             transform.GetChild(4).gameObject.SetActive(true);
@@ -132,7 +134,7 @@ public class Pool_StandTrap : MonoBehaviour
             transform.GetChild(11).gameObject.SetActive(true);
             transform.GetChild(13).gameObject.SetActive(true);
             transform.GetChild(14).gameObject.SetActive(true);
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(instSpeed * Time.deltaTime);
         }
         else
         {
@@ -144,17 +146,17 @@ public class Pool_StandTrap : MonoBehaviour
             transform.GetChild(11).gameObject.SetActive(true);
             transform.GetChild(13).gameObject.SetActive(true);
             transform.GetChild(14).gameObject.SetActive(true);
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(instSpeed * Time.deltaTime);
             transform.GetChild(3).gameObject.SetActive(true);
             transform.GetChild(6).gameObject.SetActive(true);
             transform.GetChild(9).gameObject.SetActive(true);
             transform.GetChild(12).gameObject.SetActive(true);
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(instSpeed * Time.deltaTime);
             transform.GetChild(0).gameObject.SetActive(true);
             transform.GetChild(5).gameObject.SetActive(true);
             transform.GetChild(10).gameObject.SetActive(true);
             transform.GetChild(15).gameObject.SetActive(true);
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(instSpeed * Time.deltaTime);
 
         }
     }
@@ -172,7 +174,7 @@ public class Pool_StandTrap : MonoBehaviour
                 transform.GetChild(8 + i).gameObject.SetActive(true);
                 transform.GetChild(7 - i).gameObject.SetActive(true);
                 transform.GetChild(15 - i).gameObject.SetActive(true);
-                yield return new WaitForSeconds(0.2f);
+                yield return new WaitForSeconds(instSpeed * Time.deltaTime);
             }
         }
         else
@@ -183,7 +185,7 @@ public class Pool_StandTrap : MonoBehaviour
                 transform.GetChild(12 + i).gameObject.SetActive(true);
                 transform.GetChild(3 - i).gameObject.SetActive(true);
                 transform.GetChild(11 - i).gameObject.SetActive(true);
-                yield return new WaitForSeconds(0.2f);
+                yield return new WaitForSeconds(instSpeed * Time.deltaTime);
             }
         }        
     }
@@ -201,7 +203,7 @@ public class Pool_StandTrap : MonoBehaviour
                 transform.GetChild(2 + pos).gameObject.SetActive(true);
                 transform.GetChild(13 - pos).gameObject.SetActive(true);
                 transform.GetChild(15 - pos).gameObject.SetActive(true);
-                yield return new WaitForSeconds(0.2f);
+                yield return new WaitForSeconds(instSpeed * Time.deltaTime);
                 pos += 4;
             }
         }
@@ -215,7 +217,7 @@ public class Pool_StandTrap : MonoBehaviour
                 transform.GetChild(3 + pos).gameObject.SetActive(true);
                 transform.GetChild(12 - pos).gameObject.SetActive(true);
                 transform.GetChild(14 - pos).gameObject.SetActive(true);
-                yield return new WaitForSeconds(0.2f);
+                yield return new WaitForSeconds(instSpeed * Time.deltaTime);
                 pos += 4;
             }
         }
@@ -288,14 +290,14 @@ public class Pool_StandTrap : MonoBehaviour
         {
             transform.GetChild(0).gameObject.SetActive(true);
             transform.GetChild(15).gameObject.SetActive(true);
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(instSpeed * Time.deltaTime);
             transform.GetChild(1).gameObject.SetActive(true);
             transform.GetChild(4).gameObject.SetActive(true);
             transform.GetChild(5).gameObject.SetActive(true);
             transform.GetChild(14).gameObject.SetActive(true);
             transform.GetChild(11).gameObject.SetActive(true);
             transform.GetChild(10).gameObject.SetActive(true);
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(instSpeed * Time.deltaTime);
             transform.GetChild(2).gameObject.SetActive(true);
             transform.GetChild(6).gameObject.SetActive(true);
             transform.GetChild(8).gameObject.SetActive(true);
@@ -304,7 +306,7 @@ public class Pool_StandTrap : MonoBehaviour
             transform.GetChild(5).gameObject.SetActive(true);
             transform.GetChild(7).gameObject.SetActive(true);
             transform.GetChild(13).gameObject.SetActive(true);
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(instSpeed * Time.deltaTime);
             transform.GetChild(0).gameObject.SetActive(true);
             transform.GetChild(1).gameObject.SetActive(true);
             transform.GetChild(2).gameObject.SetActive(true);
@@ -317,20 +319,20 @@ public class Pool_StandTrap : MonoBehaviour
             transform.GetChild(13).gameObject.SetActive(true);
             transform.GetChild(14).gameObject.SetActive(true);
             transform.GetChild(15).gameObject.SetActive(true);
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(instSpeed * Time.deltaTime);
         }
         else
         {
             transform.GetChild(3).gameObject.SetActive(true);
             transform.GetChild(12).gameObject.SetActive(true);
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(instSpeed * Time.deltaTime);
             transform.GetChild(2).gameObject.SetActive(true);
             transform.GetChild(6).gameObject.SetActive(true);
             transform.GetChild(7).gameObject.SetActive(true);
             transform.GetChild(8).gameObject.SetActive(true);
             transform.GetChild(9).gameObject.SetActive(true);
             transform.GetChild(13).gameObject.SetActive(true);
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(instSpeed * Time.deltaTime);
             transform.GetChild(1).gameObject.SetActive(true);
             transform.GetChild(5).gameObject.SetActive(true);
             transform.GetChild(9).gameObject.SetActive(true);
@@ -339,7 +341,7 @@ public class Pool_StandTrap : MonoBehaviour
             transform.GetChild(4).gameObject.SetActive(true);
             transform.GetChild(6).gameObject.SetActive(true);
             transform.GetChild(12).gameObject.SetActive(true);
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(instSpeed * Time.deltaTime);
             transform.GetChild(0).gameObject.SetActive(true);
             transform.GetChild(1).gameObject.SetActive(true);
             transform.GetChild(2).gameObject.SetActive(true);
@@ -352,7 +354,7 @@ public class Pool_StandTrap : MonoBehaviour
             transform.GetChild(13).gameObject.SetActive(true);
             transform.GetChild(14).gameObject.SetActive(true);
             transform.GetChild(15).gameObject.SetActive(true);
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(instSpeed * Time.deltaTime);
         }
     }
     #endregion
@@ -367,22 +369,22 @@ public class Pool_StandTrap : MonoBehaviour
             transform.GetChild(3).gameObject.SetActive(true);
             transform.GetChild(12).gameObject.SetActive(true);
             transform.GetChild(15).gameObject.SetActive(true);
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(instSpeed * Time.deltaTime);
             transform.GetChild(1).gameObject.SetActive(true);
             transform.GetChild(7).gameObject.SetActive(true);
             transform.GetChild(8).gameObject.SetActive(true);
             transform.GetChild(14).gameObject.SetActive(true);
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(instSpeed * Time.deltaTime);
             transform.GetChild(2).gameObject.SetActive(true);
             transform.GetChild(11).gameObject.SetActive(true);
             transform.GetChild(4).gameObject.SetActive(true);
             transform.GetChild(13).gameObject.SetActive(true);
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(instSpeed * Time.deltaTime);
             transform.GetChild(6).gameObject.SetActive(true);
             transform.GetChild(10).gameObject.SetActive(true);
             transform.GetChild(5).gameObject.SetActive(true);
             transform.GetChild(9).gameObject.SetActive(true);
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(instSpeed * Time.deltaTime);
         }
         else
         {
@@ -390,22 +392,22 @@ public class Pool_StandTrap : MonoBehaviour
             transform.GetChild(10).gameObject.SetActive(true);
             transform.GetChild(5).gameObject.SetActive(true);
             transform.GetChild(9).gameObject.SetActive(true);
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(instSpeed * Time.deltaTime);
             transform.GetChild(2).gameObject.SetActive(true);
             transform.GetChild(11).gameObject.SetActive(true);
             transform.GetChild(4).gameObject.SetActive(true);
             transform.GetChild(13).gameObject.SetActive(true);
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(instSpeed * Time.deltaTime);
             transform.GetChild(1).gameObject.SetActive(true);
             transform.GetChild(7).gameObject.SetActive(true);
             transform.GetChild(8).gameObject.SetActive(true);
             transform.GetChild(14).gameObject.SetActive(true);
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(instSpeed * Time.deltaTime);
             transform.GetChild(0).gameObject.SetActive(true);
             transform.GetChild(3).gameObject.SetActive(true);
             transform.GetChild(12).gameObject.SetActive(true);
             transform.GetChild(15).gameObject.SetActive(true);
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(instSpeed * Time.deltaTime);
         }
     }
     #endregion
